@@ -2,10 +2,16 @@
     <div class="container">
         <div class="params">
             <custom-btn @click="showModal">Create post</custom-btn>
+            <custom-input v-model="searchQuery"
+                          placeholder="Enter search" 
+                          name="search"
+                          required
+                          label="Search"
+                          autocomplete="off"/>
             <custom-select v-model="selectedSort" :options="sortOptions"/>
         </div>
         <h2 class="title">Posts</h2>
-        <post-list :loading="loadingPosts" v-if="!loadingPosts" :posts="posts" @remove="removePost" />
+        <post-list v-if="!loadingPosts" :loading="loadingPosts" :posts="sortedAndSeerachedPosts" @remove="removePost" />
         <preloader class="preloader" v-else/>
         <custom-dialog v-model:show="dialogShow">
             <h2 class="title-dialog">Create post</h2>
@@ -34,8 +40,9 @@ export default {
         return {
             posts: [],
             dialogShow: false,
-            loadingPosts: false,
+            loadingPosts: false, 
             selectedSort: '',
+            searchQuery: '',
             sortOptions: [
                 {value: 'title', name: 'Sort by Title'},
                 {value: 'body', name: 'Sort by Description'}
@@ -72,6 +79,20 @@ export default {
 
     mounted() {
         this.fetchPosts();
+    },
+    // watch: {
+    //     selectedSort(newValue) {
+    //         this.posts.sort((a, b) => a[newValue]?.localeCompare(b[newValue]))
+    //     }
+    // },
+    computed: {
+        sortedPosts() {
+            return [...this.posts].sort((a, b) => a[this.selectedSort]?.localeCompare(b[this.selectedSort]))
+        },
+        sortedAndSeerachedPosts() {
+            return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                post.body.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        }
     }
 
 }
@@ -122,5 +143,7 @@ body {
 .params {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
 </style>

@@ -1,12 +1,12 @@
 <template>
   <div class="field">
-        <input class="form__input"
+        <input class="input"
                 type="text"
+                :required="required"
                 :autocomplete="autocomplete"
                 :value="modelValue"
-                :name="name" 
+                :name="name"
                 :id="name"
-                :required="required"
                 @input="changeInput">
         <label :for="name" :data-placeholder="placeholder" :data-label="label"></label>
     </div>
@@ -14,28 +14,26 @@
 
 <script>
 export default {
-    inheritAttrs: false,
     name: 'custom-input',
     props: {
         modelValue: {
             type: String,
-            required: true,
+            require: true,
         },
         name: {
             type: String,
-            required: true
+            require: true
         },
         placeholder: {
             type: String,
-            required: true
+            require: true
         },
         label: {
             type: String,
-            required: true
+            require: true
         },
         required: {
-            type: Boolean,
-            required: true
+            type: String,
         },
         autocomplete: String,
     },
@@ -48,7 +46,8 @@ export default {
 </script>
 
 <style scoped>
-.form__input {
+
+.input {
     width: 100%;
     height: 40px;
     border: none;
@@ -57,12 +56,11 @@ export default {
     padding: 0 10px;
 }
 
-.form__input:focus {
+.input:focus {
     outline: 2px solid dodgerblue;
 }
 
 .field {
-    margin-top: 10px;
     position: relative;
 }
 
@@ -78,15 +76,11 @@ label:before {
     transition: .5s;
 }
 
-.form__input:focus + label:before {
+.input:valid + label:before,
+.input:focus + label:before {
     content: attr(data-label);
     color: inherit;
     transform: translateX(calc(-100% - 20px)) translateY(-50%);
 }
 
-.form__input:valid + label::before {
-    content: attr(data-label);
-    color: inherit;
-    transform: translateX(calc(-100% - 20px)) translateY(-50%);
-} 
 </style>

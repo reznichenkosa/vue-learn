@@ -1,18 +1,18 @@
 <template>
   <form class="form" @submit.prevent="createPost">
-            <custom-input v-model="post.title" 
-                          :required="true" 
+            <custom-input class="mt-10" v-model="post.title" 
+                          required
                           placeholder="Enter title" 
                           name="title" 
                           label="Title"
                           autocomplete="off"/>
-            <custom-input v-model="post.body" 
-                          :required="true" 
+            <custom-input class="mt-10" v-model="post.body" 
+                          required
                           placeholder="Enter desctiption" 
                           name="body"
                           label="Description "
                           autocomplete="off"/>
-            <custom-btn class="submit-btn">Create</custom-btn>
+            <custom-btn class="mt-15">Create</custom-btn>
         </form>
 </template>
 
@@ -55,7 +55,10 @@ export default {
     flex-direction: column;
 }
 
-.submit-btn {
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-15 {
     margin-top: 15px;
 }
 </style>

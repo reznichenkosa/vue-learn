@@ -1,9 +1,9 @@
 <template>
-   <div class="post">
+   <li class="post">
         <h3 class="title">{{ post.title }}</h3>
         <p class="description">{{ post.body }}</p>
         <custom-close-btn @keydown="keyRemovePost" @click="removePost" class="post__close"/>
-    </div>
+    </li>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
     padding: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    animation: postShow .6s;
+    background-color: #fff;
 }
 
 .title {
@@ -49,20 +49,4 @@ export default {
     margin-top: 10px;
 }
 
-@keyframes postShow {
-    0% {
-        opacity: 0;
-        left: 200px;
-    }
-    80% {
-        left: -10px;
-    }
-    90% {
-        left: 5px;
-    }
-    100% {
-        opacity: 1;
-        left: 0px;
-    }
-}
 </style>
