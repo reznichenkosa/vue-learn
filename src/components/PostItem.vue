@@ -3,13 +3,17 @@
         <h3 class="title">{{ post.title }}</h3>
         <p class="description">{{ post.body }}</p>
         <custom-close-btn @keydown="keyRemovePost" @click="removePost" class="post__close"/>
+        <div class="link">
+            <router-link :to="'/posts/' + post.id">More</router-link>
+        </div>
     </li>
 </template>
 
 <script>
+import CustomBtn from './UI/CustomBtn.vue';
 import CustomCloseBtn from './UI/CustomCloseBtn.vue';
 export default {
-  components: { CustomCloseBtn },
+  components: { CustomCloseBtn, CustomBtn },
     emits: ['remove'],
     props: {
         post: {
@@ -48,5 +52,11 @@ export default {
 .description {
     margin-top: 10px;
 }
+.link {
+    margin-top: 10px;
+}
 
+.link a {
+    color: dodgerblue;
+}
 </style>

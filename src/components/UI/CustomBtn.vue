@@ -12,7 +12,6 @@ export default {
 
 <style>
 .submit {
-    align-self: flex-end;
     padding: 0 10px;
     height: 40px;
     border: none;

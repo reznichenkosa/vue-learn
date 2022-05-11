@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="createPost">
-            <custom-input class="mt-10" v-model="post.title" 
+            <custom-input :focus=true class="mt-10" v-model="post.title" 
                           required
                           placeholder="Enter title" 
                           name="title" 

@@ -4,6 +4,7 @@ import CustomDialog from "@/components/UI/CustomDialog";
 import CustomCloseBtn from "@/components/UI/CustomCloseBtn";
 import CustomBtn from "@/components/UI/CustomBtn";
 import CustomSelect from "@/components/UI/CustomSelect";
+import NavPage from "@/components/UI/NavPage";
 
 export default [
     CustomInput,
@@ -11,5 +12,6 @@ export default [
     CustomDialog,
     CustomCloseBtn,
     CustomBtn,
-    CustomSelect
+    CustomSelect,
+    NavPage
 ]

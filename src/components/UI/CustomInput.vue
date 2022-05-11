@@ -1,6 +1,7 @@
 <template>
   <div class="field">
         <input class="input"
+                ref="inputRef"
                 type="text"
                 :required="required"
                 :autocomplete="autocomplete"
@@ -35,12 +36,22 @@ export default {
         required: {
             type: String,
         },
+        focus: {
+            type: Boolean,
+            default: false,
+        },
         autocomplete: String,
     },
     methods: {
         changeInput(e) {
             this.$emit('update:modelValue', e.target.value)
         }
+    },
+    mounted() {
+        if (this.focus) {
+            this.$refs.inputRef.focus();
+        }
+        console.log(this.$attrs)
     }
 }
 </script>
